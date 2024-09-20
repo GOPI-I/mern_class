@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Email" id="email">
+    <input type="password" placeholder="Password" id="password" required>
+    <button type="submit" onclick="loginApi()">Login</button>
+
+</body>
+
+<script>
+   async function loginApi() {
+    let data = {
+        "name" : document.getElementById("email").value,  // Changed 'email' ID
+        "password" : document.getElementById("password").value,
+    };
+    let res = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "content-type": "application/json" }
+    });
+    if (res.ok) {
+        let json = await res.json();
+        console.log(json);
+        localStorage.setItem("token", json["token"]);
+        alert("Logined Sucessfullly");
+    } else {
+        alert("login failure");
+    }
+}
+
+</script>
+</html>
