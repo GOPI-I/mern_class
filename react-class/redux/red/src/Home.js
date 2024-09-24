@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
         <div>
-            <Header/>
+            <Header currentPage = "home"/>
             <h1>{counterVal}</h1><br />
             <input type="button" value="Add" onClick={add} /> 
             <input type="button" value="Sub" onClick={sub} /> <br></br>

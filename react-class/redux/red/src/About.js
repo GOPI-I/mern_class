@@ -18,7 +18,7 @@ const About = () => {
 
     return (
         <div>
-            <Header/>
+            <Header currentPage = "About"/>
             <h1>{counterVal}</h1><br />
             <h1>{myDetails.name}</h1>
             <h1>{myDetails.email}</h1>

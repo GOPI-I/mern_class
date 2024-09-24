@@ -1,15 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Header = () => {
+export default function Header(props) {
   return (
     <div>
     <NavLink to="/home">HOME</NavLink>
+    
     <NavLink to="/contact">contacts</NavLink>
-    <NavLink to="/about">About</NavLink>
+    <NavLink to="/about">About</NavLink><br/>
+    <span>Cryptop : {props.currentPage}</span>
 </div>
 
   )
 }
 
-export default Header
