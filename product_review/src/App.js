@@ -5,10 +5,12 @@ import Login from './pages/Login';
 import Details from './pages/Details';
 import adminLogin from './pages/adminLogin';
 import Register from './pages/Register';
+import AddReview from './pages/AddReview';
 
 let routerList = createBrowserRouter([
   {path:"login",element:<Login/>},
   {path:"/",element:<Home/>},
+  {path:"/review",element:<AddReview/>},
   {path:"details",element:<Details/>},
   {path:"admin",element:<adminLogin/>},
   {path:"register",element:<Register/>}

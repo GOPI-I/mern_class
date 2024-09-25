@@ -8,15 +8,44 @@ const client = new MongoClient(url);
 const dbName = "product-review";
 
 
-router.get("getAllProducts", (req,res) => {
-    let productList = [
-        {"name" : "product1"},
-        {"name" : "product2"},
-        {"name":"product3"},
-        {"name":"product45"}
-    ]
+router.get("/getAllProducts", async(req,res) => {
+    await client.connect();
+    let db = client.db(dbName);
+
+    // let productList = [
+    //     {"name" : "Sathish Veshti"},
+    //     {"name" : "vignesh jetti"},
+    //     {"name":"karan baniyan"},
+    //     {"name":"akash shirt"},
+    //     {"name":"Nithish jeans"}
+    // ];
+    let list = await db.collection("user").find().sort({name:1}).toArray();
+    // let list = await db.collection("user").find().skip(1).limit(10).sort({name:1}).toArray();
+    res.json(list);
+    console.log(list);
 });
 
-module.exports = router
+router.post("/addReview",async (req,res) => {
+    let{category,reviewText,name} = req.body;
+
+    let data = {
+        "name":name,
+        "category":category,
+        "reviewText":reviewText
+    };
+    let path = __dirname+"/uploads/"+req.files.img.name;
+    req.files.img.mv(path,(err)=>{
+
+    });
+    await client.connect();
+    let db = client.db(dbName);
+
+    db.collection("product").insertOne(data);
+    res.json({msg:"producyt added for review"});
+    
+    
+})
+
+module.exports = router;
 
 
