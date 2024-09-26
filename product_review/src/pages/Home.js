@@ -60,7 +60,7 @@ function Home() {
                     </a>
                   </div>
                 </div>
-                <a href="" class="nav-item nav-link">
+                <a href="" data-testid="test2" class="nav-item nav-link">
                   Shirts
                 </a>
                 <a href="" class="nav-item nav-link">
